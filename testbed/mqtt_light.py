@@ -31,7 +31,7 @@ def publish_light_status():
     global LIGHT
     while True:
         client.publish("light_status", STATUS[LIGHT])
-        time.sleep(5)
+        time.sleep(0.1)
 
 
 client = mqtt.Client(CallbackAPIVersion.VERSION2)

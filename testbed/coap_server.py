@@ -32,8 +32,7 @@ class CoAPResource(Resource):
             raise NotImplementedError
         
         print(f"Received CoAP POST request on {request.uri_path}: {request.payload}")
-        response = self.client.post(request.uri_path, request.payload)
-        # self.payload = response.payload
+        self.payload = b"POST request received"
         return self
 
 class CoAPServer(CoAP):

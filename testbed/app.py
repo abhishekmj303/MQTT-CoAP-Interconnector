@@ -11,13 +11,13 @@ def update_status():
     while True:
         response = client.get("light_status")
         status_label.config(text=f"Light Status: {response.payload.upper()}")
-        time.sleep(5)
+        time.sleep(0.1)
 
 server = CoAPServer()
 server_thread = threading.Thread(target=server.listen, args=(10,))
 server_thread.start()
 
-client = CoAPClient.HelperClient(("127.0.0.1", 5683))
+client = CoAPClient.HelperClient(("127.0.0.1", 5684))
 
 window = tk.Tk()
 window.title("Room Light Control")
