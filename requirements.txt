@@ -1,0 +1,3 @@
+paho-mqtt
+CoAPthon3
+pydantic

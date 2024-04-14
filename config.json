@@ -1,0 +1,16 @@
+{
+    "mqtt_broker": ["mqtt.eclipseprojects.io", 1883],
+    "coap_server": ["localhost", 5683],
+    "coap_to_mqtt": [
+        {
+            "mqtt_topic": "light_control",
+            "coap_resource": "/light_control"
+        }
+    ],
+    "mqtt_to_coap": [
+        {
+            "mqtt_topic": "light_status",
+            "coap_resource": "/light_status"
+        }
+    ]
+}
