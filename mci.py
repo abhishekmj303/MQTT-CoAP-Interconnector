@@ -15,6 +15,7 @@ import threading
 
 # JSON configuration
 import json
+from json.decoder import JSONDecodeError
 from pydantic import ValidationError
 from config_model import Config
 
@@ -142,8 +143,8 @@ if __name__ == "__main__":
             config_data = config_file.read()
         CONFIG = Config(**json.loads(config_data))
         print(CONFIG)
-    except (FileNotFoundError, ValidationError) as e:
-        print("Error loading configuration file:", e)
+    except (FileNotFoundError, JSONDecodeError, ValidationError) as e:
+        print(f"Error loading configuration file: {e.__class__.__name__}: {e}")
         exit(1)
 
     mci = MCI()
