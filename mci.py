@@ -16,7 +16,7 @@ import threading
 # JSON configuration
 import json
 from pydantic import ValidationError
-from json_config import Config
+from config_model import Config
 
 MTU = 1500  # Maximum Transfer Unit
 

@@ -6,7 +6,7 @@ import json
 from pydantic import ValidationError
 import sys
 sys.path.append(".")
-from json_config import Config
+from config_model import Config
 
 CONFIG: Config
 
