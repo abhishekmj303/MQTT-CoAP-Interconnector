@@ -9,6 +9,7 @@ from coapthon.resources.resource import Resource
 import coapthon.client.helperclient as CoAPClient
 
 # Standard library
+import sys
 import struct
 import time
 import threading
@@ -77,7 +78,7 @@ class MCI:
 
     def send_coap_message(self, resource, payload):
         response = self.coap_client.post(resource, payload)
-        if response.code == coapthon.defines.Codes.CHANGED.number:
+        if response:
             print(f"CoAP message sent successfully: {resource}")
         else:
             print(f"Failed to send CoAP message: {resource}")
@@ -138,8 +139,13 @@ class CoAPServer(CoAP):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        config_path = sys.argv[1]
+    else:
+        config_path = "config.json"
+    print(f"Loading configuration from {config_path}")
     try:
-        with open("config.json", "r") as config_file:
+        with open(config_path, "r") as config_file:
             config_data = config_file.read()
         CONFIG = Config(**json.loads(config_data))
         print(CONFIG)

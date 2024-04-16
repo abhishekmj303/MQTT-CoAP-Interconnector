@@ -1,0 +1,18 @@
+{
+    "mqtt_broker": ["mqtt.eclipseprojects.io", 1883],
+    "coap_server": ["127.0.0.1", 5683],
+    "mci_server": ["127.0.0.1", 5684],
+    "coap_to_mqtt": [
+        {
+            "mqtt_topic": "benchmark",
+            "coap_resource": "benchmark",
+            "methods": ["POST"]
+        }
+    ],
+    "mqtt_to_coap": [
+        {
+            "mqtt_topic": "benchmark",
+            "coap_resource": "benchmark"
+        }
+    ]
+}
