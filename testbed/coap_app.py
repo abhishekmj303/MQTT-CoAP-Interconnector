@@ -61,7 +61,10 @@ def toggle_light():
 def update_status():
     while True:
         response = client.get("light_status")
-        status_label.config(text=f"Light Status: {response.payload.upper()}")
+        if response.payload:
+            status_label.config(text=f"Light Status: {response.payload.upper()}")
+        else:
+            status_label.config(text="Light Status: Unknown")
         time.sleep(0.1)
 
 server = CoAPServer()
@@ -71,9 +74,11 @@ server_thread.start()
 client = CoAPClient.HelperClient(("127.0.0.1", 5684))
 
 window = tk.Tk()
+# increase font size
+window.option_add("*Font", "Helvetica 24")
 window.title("Room Light Control")
 
-status_label = tk.Label(window, text="Light Status: OFF")
+status_label = tk.Label(window, text="Light Status: Unknown")
 status_label.pack()
 
 toggle_button = tk.Button(window, text="Toggle Light", command=toggle_light)
