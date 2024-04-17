@@ -84,6 +84,12 @@ status_label.pack()
 toggle_button = tk.Button(window, text="Toggle Light", command=toggle_light)
 toggle_button.pack()
 
+for _ in range(3):
+    tk.Label(window, text="").pack()
+
+app_label = tk.Label(window, text="CoAP Client App")
+app_label.pack()
+
 update_thread = threading.Thread(target=update_status)
 update_thread.start()
 

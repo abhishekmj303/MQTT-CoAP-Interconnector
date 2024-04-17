@@ -45,8 +45,15 @@ publish_thread = threading.Thread(target=publish_light_status)
 publish_thread.start()
 
 window = tk.Tk()
+window.option_add("*Font", "Helvetica 24")
 window.title("Room Light")
 window.geometry("100x100")
+
+for _ in range(2):
+    tk.Label(window, text="", fg="#fff").pack()
+
+app_label = tk.Label(window, text="MQTT Connected Light")
+app_label.pack()
 
 # background color will change based on the light status
 window.configure(bg=COLOR[LIGHT])
